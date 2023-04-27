@@ -14,11 +14,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
                     res.status(200).json(result)
                 })
-
-
+                break;
+            case 'POST':
+                res.status(501).end(`${method} Not Implemented`)
+                break;
+            case 'PUT':
+                res.status(501).end(`${method} Not Implemented`)
+                break;
+            case 'DELETE':
+                res.status(501).end(`${method} Not Implemented`)
                 break;
             default:
-                res.setHeader('Allow', ['GET'])
+                res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE'])
                 res.status(405).end(`Method ${method} Not Allowed`)
                 break;
         }
