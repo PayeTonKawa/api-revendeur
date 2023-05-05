@@ -8,9 +8,10 @@
 ### products :
     - [GET] /api/products/ -> renvoi la liste de tout les produits
     - [GET] /api/products/{id} -> renvoi un produit spécifique
-### stock :
+
+### stocks :
     - [GET] /api/stocks/ -> renvoi la quantité des stocks pour l'ensemble des produits
     - [GET] /api/stocks/{id} -> renvoi la quantité des stocks pour un produit spécifique
-### order :
+### orders :
     - [GET] /api/orders -> renvoi la liste de toutes les commandes
     - [GET] /api/orders/{id} -> renvoi une commande spécifique

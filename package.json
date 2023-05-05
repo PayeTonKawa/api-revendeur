@@ -7,8 +7,12 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^3.5.9",
+    "mongodb-client-encryption": "^2.7.1",
     "next": "latest",
+    "nodemailer": "^6.9.1",
+    "qrcode": "^1.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swr": "^2.0.0"
