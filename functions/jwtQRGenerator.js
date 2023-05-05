@@ -1,11 +1,11 @@
-import QRCode from 'qrcode';
 import jwt from 'jsonwebtoken';
-import nodemailer from 'nodemailer';
 
-export function jwtGenerator(userInfos) {
+
+export function jwtGenerator(userEmail) {
+    const SECRET = process.env.JWT_SECRET
     const infos = {
-        email: userInfos
+        email: userEmail
     }
 
-    return jwt.sign(infos, 'secret');
+    return jwt.sign(infos, SECRET);
 }
