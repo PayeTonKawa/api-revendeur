@@ -1,7 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import clientPromise from "../../../lib/mongodb";
+import { apiHandler } from '../../../helpers/api/api-handler';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default apiHandler(handler)
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
     const client = await clientPromise;
     const db = client.db("payetonkawa");
     const clientCollection = await db.collection('customers');
