@@ -16,7 +16,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                 productCollection.find({}).toArray(function (err, result) {
                     if (!result) throw res.status(404).end(err)
 
-                    res.status(200).json(result)
+                    res.status(200).json({ code: 200, data: result })
                 })
                 break;
             case 'POST':
