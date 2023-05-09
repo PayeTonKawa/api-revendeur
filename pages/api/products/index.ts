@@ -11,19 +11,9 @@ import { apiHandler } from '../../../helpers/api/api-handler';
  *     summary: Get products
  *     responses:
  *       200:
- *         description: todo
+ *         description: get all products
  *     security:
- *       - api_key: []
- *   put:
- *     tags:
- *       - Products
- *     summary: Add product
- *     responses:
- *       200:
- *         description: todo
- *     security:
- *      - api_key: []
- * 
+ *       - jwt_token: []
  */
 
 export default apiHandler(handler)

@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async () => {
       components: {
         securitySchemes: 
           {
-            api_key: {
+            jwt_token: {
               type: 'apiKey',
               name: 'auth-token',
               in: 'header',

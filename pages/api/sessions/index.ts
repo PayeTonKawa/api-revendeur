@@ -3,6 +3,30 @@ import clientPromise from "../../../lib/mongodb";
 import { jwtGenerator } from '../../../functions/jwtQRGenerator';
 import mailSender from '../../../functions/mailSender';
 
+/**
+ * @swagger
+ * /api/sessions:
+ *   post:
+ *     tags:
+ *       - Sessions
+ *     summary: Get email or JWT
+ *     responses:
+ *       200:
+ *         description: if the email does not exist in DB, an email is sent to the email provided as arg, with a QRCode containing JWT. If the email exists, you will receive the corresponding JWT
+ *     parameters:
+ *       - name: email
+ *         in: body
+ *         description: User Email
+ *         schema:
+ *           type: object
+ *           required :
+ *              - email
+ *           properties:
+ *              email:
+ *                type: string
+ *          
+ *
+ */
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const client = await clientPromise;
@@ -21,15 +45,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
                 break;
             case 'POST':
-                sessionsCollection.findOne({ email: email }, function (err, result) {
-                    if (!result || result.length === 0){
-                        mailSender(token, email, res)
-                        sessionsCollection.insertOne({email: email, jwt:token})
-                    } else {
-                        res.status(200).json({ code: 200, data: {jwt: result.jwt, emailSent : false} })
-                    }
-
-                })
+                if (email) {
+                    sessionsCollection.findOne({ email: email }, function (err, result) {
+                        if (!result || result.length === 0){
+                            mailSender(token, email, res)
+                            sessionsCollection.insertOne({email: email, jwt:token})
+                        } else {
+                            res.status(200).json({ code: 200, data: {jwt: result.jwt, emailSent : false} })
+                        }
+    
+                    })
+                } else {
+                    res.status(400).json({code: 400, date: {message: "paramètre obligatoire manquant"}})
+                }
+                
                 break;
             case 'PUT':
                 res.status(501).end(`${method} Not Implemented`)

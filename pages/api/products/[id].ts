@@ -2,6 +2,28 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import clientPromise from "../../../lib/mongodb";
 import { apiHandler } from '../../../helpers/api/api-handler';
 
+/**
+ * @swagger
+ * /api/products/{product_id}/:
+ *   get:
+ *     tags:
+ *       - Products
+ *     summary: Get one specific product
+ *     responses:
+ *       200:
+ *         description: get a product based on its ID
+ *     parameters:
+ *       - name: product_id
+ *         in: path
+ *         description: Product ID
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int64
+ *     security:
+ *      - jwt_token: []
+ */
+
 export default apiHandler(handler)
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
