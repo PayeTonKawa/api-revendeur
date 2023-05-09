@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  api_revendeur_epsi:
+    image: api_revendeur_epsi
+    build: .
+    deploy: 
+      replicas: 3
+
+  ngnix_revendeur_epsi:
+    image: ngnix_revendeur_epsi
+    build: ./ngnix
+    depends_on:
+      - api_revendeur_epsi
+    ports:
+      - 4002:4002

@@ -1,5 +1,4 @@
 echo "BUILD ================================================================="
-docker build -t api_revendeur_epsi .
-echo "RUN ==================================================================="
-docker stop api_revendeur_epsi || true && docker rm -f api_revendeur_epsi || true
-docker run -d --name api_revendeur_epsi -p "4002:3000" api_revendeur_epsi
+docker-compose build  
+echo "DEPLOY ==================================================================="
+docker-compose -f ./docker-compose.yml --compatibility -p api_revendeur_epsi up -d
