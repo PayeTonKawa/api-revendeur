@@ -13,17 +13,17 @@ import mailSender from '../../../functions/mailSender';
  *     responses:
  *       200:
  *         description: if the email does not exist in DB, an email is sent to the email provided as arg, with a QRCode containing JWT. If the email exists, you will receive the corresponding JWT
- *     parameters:
- *       - name: email
- *         in: body
- *         description: User Email
- *         schema:
- *           type: object
- *           required :
- *              - email
- *           properties:
- *              email:
- *                type: string
+ *     requestBody:
+ *       description: Update an existent pet in the store
+ *       content:
+ *         application/json:
+ *           schema:
+ *             required:
+ *               - email
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
  *          
  *
  */

@@ -21,9 +21,9 @@ export default async function mailSender(token, userEmail, res) {
 
     try {
         await transporter.sendMail(mailOptions);
-        res.status(200).json({message: "Le code a été envoyé avec succès", emailSent: true })
+        res.status(200).json({code: 200, data: {message: "Le code a été envoyé avec succès", emailSent : true} })
     } catch (error) {
         console.log(error);
-        res.status(500).json({message: "une erreur est survenu lors de l'envoi du code"})
+        res.status(500).json({code: 400, data: {message: "une erreur est survenu lors de l'envoi du code"}})
     }
 }
